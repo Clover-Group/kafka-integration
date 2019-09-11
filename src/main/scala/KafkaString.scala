@@ -6,7 +6,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
 
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
 
-import kafka.Serdes._
+import org.apache.flink.api.common.serialization.SimpleStringSchema
 
 object KafkaString extends App {
 
@@ -26,10 +26,10 @@ object KafkaString extends App {
   props.setProperty("auto.offset.reset", "earliest"); // Always read topic from start
 
   val topic    = "stringTopic"
-  val consumer = new FlinkKafkaConsumer(topic, new StringDeserializer, props)
+  val consumer = new FlinkKafkaConsumer(topic, new SimpleStringSchema, props)
 
   val stream: DataStream[String] = env.addSource(consumer)
-  stream.map(s => println(s))
+  val out                        = stream.print
 
   env.execute()
 }

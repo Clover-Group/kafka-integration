@@ -1,7 +1,7 @@
 package kafka
 
 import java.io.{ ByteArrayInputStream }
-import org.apache.flink.api.common.serialization.{ AbstractDeserializationSchema }
+import org.apache.flink.api.common.serialization.AbstractDeserializationSchema
 
 import org.apache.arrow.memory.RootAllocator
 import org.apache.arrow.vector.ipc.{ ArrowStreamReader }
@@ -9,10 +9,6 @@ import org.apache.arrow.vector.ipc.{ ArrowStreamReader }
 object Serdes {
 
   type BArr = Array[Byte]
-
-  class StringDeserializer extends AbstractDeserializationSchema[String] {
-    override def deserialize(bytes: BArr): String = bytes.toString
-  }
 
   class BytesDeserializer extends AbstractDeserializationSchema[BArr] {
     override def deserialize(bytes: BArr): BArr = bytes
