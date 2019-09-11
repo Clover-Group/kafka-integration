@@ -8,7 +8,7 @@ import org.apache.flink.api.common.restartstrategy.RestartStrategies
 
 import org.apache.flink.api.common.serialization.SimpleStringSchema
 
-object KafkaString extends App {
+object StringConsumer extends App {
 
   val env = StreamExecutionEnvironment.getExecutionEnvironment
   env.setRestartStrategy(RestartStrategies.noRestart)
