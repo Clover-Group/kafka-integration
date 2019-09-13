@@ -24,7 +24,8 @@ object ArrowConsumer extends App {
 
   val props = new Properties
 
-  props.setProperty("bootstrap.servers", "localhost:9092")
+  // props.setProperty("bootstrap.servers", "localhost:9092")
+  props.setProperty("bootstrap.servers", "37.228.115.243:31807")
   props.setProperty("group.id", "group0")
   props.setProperty("auto.offset.reset", "earliest"); // Always read topic from start
 
